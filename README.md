@@ -16,7 +16,7 @@ Please prepare you computer for the workshop **before the workshop**. There will
 
 **Do not postpone this until the last minute.**  Depending on what software you may already have installed, some steps of this setup may require time-consuming downloads.
 
-We will presume participants have basic familiarity with terminal-based command line computing, and with the Python language and Jupyter notebooks. Some familiarity with R may be helpful, but the R examples should be accessible to Python programmers.
+We will presume participants have basic familiarity with terminal-based command line computing, and with the Python language and Jupyter notebooks. Some familiarity with R would be helpful, but the R examples should be accessible to Python programmers.
 
 To run the lab materials, you will need the following resources (version numbers are those we used for testing; earlier versions may suffice in some cases):
 
@@ -57,7 +57,11 @@ Download and install a recent Java JDK (Java Development Kit). RStudio requires 
 
 *XQuartz:* We recommend that Mac users who do not have the newest XQuartz install it or upgrade their current installation.  We do not know if it is a requirement for our environment, but `matplotlib` does interact with it (for fonts) if it is present. There are minor issues between the newest `matplotlib` and older versions of XQuartz; install the newest XQuartz from: [XQuartz](https://www.xquartz.org/).
 
-**All users:**
+
+
+### Installing the Anaconda `cospop18` environment
+
+**All users** should do the following:
 
 * Install Anaconda with Python 3.6: [Downloads | Anaconda](https://www.anaconda.com/download/#macos).  Exceptions:
 
@@ -66,13 +70,13 @@ Download and install a recent Java JDK (Java Development Kit). RStudio requires 
 
 * Update the `conda` command-line package manager in a terminal/shell session by running `conda update conda`.  **Note:** There is an important bug in the current Anaconda/Miniconda versions of `conda`, so unless you've done this update very recently, you *must* do it now.  The update command may report that it is changing your Anaconda package to a "custom" version.  This will not be a problem; when Anaconda is updated, your installation will eventually synchronize with it.
 
-* Define and install the `cospop18` environment by using `conda` at the command line as follows (here "$" represents the prompt):
+* Define and install the `cospop18` environment by using `conda` at the command line as follows (here "$" represents the prompt). During installation, you may see instructions displayed about setting up `dbus`; this is a Linux application communication tool that we won't be using, so you may safely ignore these instructions.
 
 ```
 $ conda create -n CosPop18 python=3.6 anaconda pystan r-essentials rstudio rpy2 r-reticulate
 ```
 
-* You may omit `rpy2` and `r-reticulate` in that command if you wish. These provide access to R from Python ([RPy2](https://rpy2.readthedocs.io/en/version_2.8.x/)) and to Python from R ([Reticulate](https://rstudio.github.io/reticulate/)).  We don't plan to use them during the workshop, but since we will use Python and R, you may want to experiment with them.  During installation, you may see instructions displayed about setting up `dbus`; this is a Linux application communication tool that we won't be using, so you may safely ignore these instructions.
+* You may omit `rpy2` and `r-reticulate` in that command if you wish. These provide access to R from Python ([RPy2](https://rpy2.readthedocs.io/en/version_2.8.x/)) and to Python from R ([Reticulate](https://rstudio.github.io/reticulate/)).  We don't plan to use them during the workshop, but since we will use Python and R, you may want to experiment with them.
 
 * Verify that the environment works by activating it.  Activation runs a shell script that changes environment variables in the current shell.  This will likely display a lot of environment variable values on your terminal; this is fine (as long as there are no errors).
 
@@ -80,21 +84,21 @@ $ conda create -n CosPop18 python=3.6 anaconda pystan r-essentials rstudio rpy2 
   ```
   $ source activate cospop18
   ```
-    - On Windows, in your Anaconda Prompt, run:
+    - On Windows, at your Anaconda Prompt, run:
   ```
   $ activate cospop18
   ```
 
-* Deactivate the environment:  If you encounter a bug with this, you may not have properly updated `conda` (the recent bugfix mentioned above affects deativation).
+* Deactivate the environment.  If you encounter a bug with this, you may not have properly updated `conda` (the recent bugfix mentioned above affects deativation).
 
     - On macOS and Linux, in your Terminal Window, run:
   `source deactivate`
     - On Windows, in your Anaconda Prompt, run:
   `deactivate`
 
-At this point you should be set up.  If you'd like to run a couple quick tests, try these:
+At this point you should be set up.  We recommend running these two quick tests:
 
-* Test PyStan using the Python interpreter by running these commands (you can copy and paste them at the Python or IPython interpreter prompt):
+* Test PyStan using a Python interpreter by running these commands (you can copy and paste them at the Python or IPython interpreter prompt):
 
 ```python
 import pystan
@@ -113,4 +117,4 @@ y = model.sampling(n_jobs=1).extract()['y']
 y.mean()  # with luck the result will be near 0
 ```
 
-* Launch RStudio:  Simply enter `rstudio` at a command-line prompt. This should launch the RStudio IDE; you may quit it after launch.
+* Verify that RStudio launches successfully.  Simply enter `rstudio` at a command-line prompt. This should launch the RStudio IDE; you may quit it after launch.
