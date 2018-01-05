@@ -73,7 +73,7 @@ Download and install a recent Java JDK (Java Development Kit). RStudio requires 
 * Define and install the `cospop18` environment by using `conda` at the command line as follows (here "$" represents the prompt). During installation, you may see instructions displayed about setting up `dbus`; this is a Linux application communication tool that we won't be using, so you may safely ignore these instructions.
 
 ```
-$ conda create -n CosPop18 python=3.6 anaconda pystan r-essentials rstudio rpy2 r-reticulate
+$ conda create -n cospop18 python=3.6 anaconda pystan r-essentials rstudio rpy2 r-reticulate
 ```
 
 * You may omit `rpy2` and `r-reticulate` in that command if you wish. These provide access to R from Python ([RPy2](https://rpy2.readthedocs.io/en/version_2.8.x/)) and to Python from R ([Reticulate](https://rstudio.github.io/reticulate/)).  We don't plan to use them during the workshop, but since we will use Python and R, you may want to experiment with them.
